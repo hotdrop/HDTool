@@ -54,7 +54,7 @@ public class StackTraceFile {
 		
 		String matchDateStr = "";
 		String exceptionStr = "";
-		String messages = "";
+		String message = "";
 		
 		boolean foundDate = false;
 		boolean foundException = false;
@@ -77,7 +77,7 @@ public class StackTraceFile {
 						exceptionStr = exceptionMacher.group();
 						int idx = line.indexOf(exceptionStr) + exceptionStr.length();
 						if (line.length() > idx + 1) {
-							messages = line.substring(idx + 1);
+							message = line.substring(idx + 1);
 						}
 						foundException = true;
 					}
@@ -85,13 +85,13 @@ public class StackTraceFile {
 				
 				if(foundException && !foundWord) {
 					if(line.contains(searchWord)) {
-						String key = matchDateStr + exceptionStr + messages + line;
+						String key = matchDateStr + exceptionStr + message + line;
 						if(map.containsKey(key)) {
 							StackTraceData stData = map.get(key);
 							stData.addCount();
 							map.replace(key, stData);
 						} else {
-							StackTraceData stData = new StackTraceData(matchDateStr, exceptionStr, messages, line);
+							StackTraceData stData = new StackTraceData(matchDateStr, exceptionStr, message, line);
 							map.put(key, stData);
 						}
 						foundWord = true;

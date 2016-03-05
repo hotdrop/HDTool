@@ -53,7 +53,7 @@ public class Main extends JFrame {
 	 */
 	public Main() {
 		setResizable(false);
-		setTitle("AnalyzeStackTraceTool");
+		setTitle("SummaryStackTraceTool");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 120);
 		setLocationRelativeTo(null);
